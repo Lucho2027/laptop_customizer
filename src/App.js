@@ -38,26 +38,34 @@ class App extends Component {
     });
   };
 
+  calculateTotal = () => {
+    const total = Object.keys(this.state.selected).reduce(
+      (acc, curr) => acc + this.state.selected[curr].cost,
+      0
+    );
+    return (total)
+
+  }
+
   render() {
-    
+    this.calculateTotal()
     return (
       <div className="App">
         <header>
           <h1>ELF Computing | Laptops</h1>
         </header>
         <main>
-          <form className="main__form">
-            <h2>Customize your laptop</h2>
-            <PartList
-              feature={this.props.features} />
-          </form>
-          <section className="main__summary">
-            <h2>Your cart</h2>
-            <CurrentBuild
+         <PartList
+              features={this.props.features}
               selected={this.state.selected}
-              handleFeature={feature => this.updateFeature(feature, newValue)} />
-            
-          </section>
+              updateFeature={this.updateFeature} />
+
+
+          <CurrentBuild
+            total={this.calculateTotal()}
+            selected={this.state.selected} />
+
+
         </main>
       </div>
 

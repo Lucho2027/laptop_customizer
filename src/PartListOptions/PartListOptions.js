@@ -27,6 +27,9 @@ class PartListOptions extends Component {
         })
        
     }
+    PartListOptions.defaultProps ={
+        feature:[]
+    }
 }
 
 export default PartListOptions;
