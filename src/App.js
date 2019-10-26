@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+//import ParListOptions from'./PartListOptions/PartListOptions'
 
 // Normalizes string as a slug - a string that is safe to use
 // in both URLs and html attributes
@@ -70,6 +71,7 @@ class App extends Component {
           <legend className="feature__name">
             <h3>{feature}</h3>
           </legend>
+          {/*<ParListOptions/>*/} 
           {options}
         </fieldset>
       );
@@ -103,6 +105,7 @@ class App extends Component {
         <main>
           <form className="main__form">
             <h2>Customize your laptop</h2>
+            {/*<PartsList/>*/}
             {features}
           </form>
           <section className="main__summary">
