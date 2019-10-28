@@ -1,32 +1,24 @@
 import React, { Component } from 'react';
 import './PartList.css';
-import slugify from 'slugify';
 
-const USCurrencyFormat = new Intl.NumberFormat('en-US', {
-  style: 'currency',
-  currency: 'USD'
-});
+import Part from'../Part/Part'
+
+
 
 class PartList extends Component {
-  render() {
+  render(){
     const features = Object.keys(this.props.features).map((feature, idx) => {
       const featureHash = feature + '-' + idx;
-      const options = this.props.features[feature].map(item => {
-        const itemHash = slugify(JSON.stringify(item));
+      const options = this.props.features[feature].map((item, index) => {
+        
         return (
-          <div key={itemHash} className="feature__item">
-            <input
-              type="radio"
-              id={itemHash}
-              className="feature__option"
-              name={slugify(feature)}
-              checked={item.name === this.props.selected[feature].name}
-              onChange={e => this.props.updateFeature(feature, item)}
-            />
-            <label htmlFor={itemHash} className="feature__label">
-              {item.name} ({USCurrencyFormat.format(item.cost)})
-            </label>
-          </div>
+          <Part 
+          key={index}
+          item={item}
+          feature={feature}
+          selected={this.props.selected}
+          updateFeature={this.props.updateFeature}
+          />
         );
       });
 
